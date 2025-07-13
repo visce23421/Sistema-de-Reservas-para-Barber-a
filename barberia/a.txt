@@ -1,0 +1,115 @@
+http://localhost:8090/swagger-ui/index.html
+
+
+        BARBERO                                                            -----get all
+                                http://localhost:8090/api/barberos        ----post crear 
+
+                                {
+                                "nombre": "Juan Pérez",
+                                
+                                "numeroTelefonico": "+56912345678"
+                               
+                                }
+                                http://localhost:8090/api/barberos/buscarPorNombre/juan -----get
+                                 http://localhost:8090/api/1   ---------delete ,get  y put  para eliminar ,buscar y actulizar por id 
+                                PUT
+                                {
+                                "nombre": "Juan rios",
+                                
+                                "telefono": "+56912345678"
+                               
+                                }
+                                 http://localhost:8090/api/barberos/buscarPorNumero/+56912345678  ----get
+
+
+
+        CLIENTES        http://localhost:8090/api/clientes   -----get all 
+                                                                ----post crear
+                                {
+                                "nombre": "María Pérez",
+                                "telefono": "+56987654321",
+                                "correo": "maria.perez@example.com"
+                                }
+                        http://localhost:8090/api/clientes/{id}        ---PUT PARA actulizar
+                                                                        ----GET PARA BUSCAR POR ID
+                                                                        ---- DELETE PARA eliminar
+                        http://localhost:8090/api/clientesbuscarPorNombre/{nombre}
+                        http://localhost:8090/api/clientesbuscarPorTelefono/{telefono}
+                        http://localhost:8090/api/clientesbuscarPorCorreo/{correo}
+
+
+
+
+        HORARIOS        http://localhost:8090/api/horarios/barbero/{id}        ---GET POR BARBERO 
+                        
+                                {
+                                "barbero": {                                  
+                                "idbarbero":1
+                                },
+                                "diaSemana": {
+                                  
+                                "idDia": 7
+                                  
+                                },
+                                "horaInicio": "09:00",
+                                "horaFin": "12:00"
+                                }
+                                                       ---post
+                         http://localhost:8090/api/horarios/buscarPorDia/{diaSemana}  
+
+
+        RESERVAS       
+                        http://localhost:8090/api/reservas              ---GET ALL   -----!!!CREAR  SERVICIO PRIMERO 
+                               {
+                                "cliente": {
+                                "idCliente": 1
+                                },
+                                "barbero": {
+                                "idbarbero": 1
+                                },
+                                "servicios": {
+                                "idServicio": 1
+                                },
+                                "fecha": "2025-06-16",
+                                "hora": "10:00"
+                                }
+                        http://localhost:8090/api/reservas/f/2025-06-16   ---GET POR FECHA
+                        http://localhost:8090/api/reservas/cliente/{nombre}
+                        http://localhost:8090/api/reservas/barbero/{nombre}
+                        http://localhost:8090/api/reservas/servicio/nombre/{nombreServicio}
+                        http://localhost:8090/api/reservas/buscar?cliente=Juan&barbero=maria
+                        http://localhost:8090/api/reservas/1/estado?estado=CONFIRMADA --- PUT actulizar estado
+                       
+                       
+        servicios                     
+                        http://localhost:8090/api/servicios        
+                                                 {
+                                                "nombre": "Corte de cabello básico",
+                                                "duracion": 30,
+                                                "precio": 5000
+                                                }
+
+                       
+                       
+                       
+                        http://localhost:8090/api/servicios/{id}               GET
+                        http://localhost:8090/api/servicios/buscar   -------GET por nombre o precio o duracio o todas juntas 
+                                        ?nombre=Corte&precio=5000&duracion=30
+                                        ?nombre=Corte&precio=5000
+                                        ?precio=5000  
+                                        ?duracion=30
+                                        ?nombre=Corte
+
+
+cloudflared tunnel run mi-backend
+
+
+NSERT INTO DIA_SEMANA (ID_DIA, NOMBRE) VALUES (1, 'Lunes');
+INSERT INTO DIA_SEMANA (ID_DIA, NOMBRE) VALUES (2, 'Martes');
+INSERT INTO DIA_SEMANA (ID_DIA, NOMBRE) VALUES (3, 'Miércoles');
+INSERT INTO DIA_SEMANA (ID_DIA, NOMBRE) VALUES (4, 'Jueves');
+INSERT INTO DIA_SEMANA (ID_DIA, NOMBRE) VALUES (5, 'Viernes');
+INSERT INTO DIA_SEMANA (ID_DIA, NOMBRE) VALUES (6, 'Sábado');
+INSERT INTO DIA_SEMANA (ID_DIA, NOMBRE) VALUES (7, 'Domingo');
+
+COMMIT;
